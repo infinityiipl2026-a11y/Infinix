@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Logo from "./Logo";
 
 const links = [
   { href: "/", label: "Home" },
@@ -34,15 +35,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-content mx-auto flex items-center justify-between px-6 md:px-10 h-20">
-        <Link
-          href="/"
-          className="font-display text-xl tracking-tight flex items-center gap-2"
-          aria-label="Infinix home"
-        >
-          <span aria-hidden className="text-clayDeep">
-            ∞
-          </span>
-          Infinix
+        <Link href="/" aria-label="Infinix home">
+          <Logo />
         </Link>
 
         <nav className="hidden md:flex items-center gap-10 font-mono text-[11px] uppercase tracking-widest2">

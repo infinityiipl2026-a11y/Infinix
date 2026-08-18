@@ -607,3 +607,35 @@ export const categories: Category[] = [
   "Wipes",
   "Gift Sets",
 ];
+
+export interface CategoryGroup {
+  slug: string;
+  label: string;
+  icon: string;
+  categories: Category[];
+}
+
+/**
+ * Broader "Shop by category" groupings for the homepage — each links to
+ * the shop, pre-filtered to every real product Category folded into it.
+ */
+export const categoryGroups: CategoryGroup[] = [
+  {
+    slug: "household-hygiene",
+    label: "Household & Hygiene",
+    icon: "/images/categories/household.png",
+    categories: ["Hand Wash", "Sanitizer", "Disinfectant Spray"],
+  },
+  {
+    slug: "personal-care",
+    label: "Personal Care",
+    icon: "/images/categories/personal.png",
+    categories: ["Soap", "Gel", "Wipes", "Gift Sets"],
+  },
+  {
+    slug: "fragrance-grooming",
+    label: "Fragrance & Grooming",
+    icon: "/images/categories/fragrance.png",
+    categories: ["Body Mist", "Talcum", "No Gas Deodorant"],
+  },
+];

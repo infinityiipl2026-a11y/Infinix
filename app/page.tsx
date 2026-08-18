@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import ImageFrame from "@/components/ImageFrame";
 import InfinityDivider from "@/components/InfinityDivider";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
-import { products } from "@/lib/products";
+import { categoryGroups, products } from "@/lib/products";
 
 const featured = products.filter((p) => p.featured);
 
@@ -12,20 +13,20 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-16 md:pb-0 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-end">
-          <div className="md:col-span-6 md:col-start-1 order-2 md:order-1">
+        <div className="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-16 md:pb-0 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-center">
+          <div className="md:col-span-5 md:col-start-1 order-2 md:order-1">
             <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink/50 mb-6">
               Infinix — Current Collection
             </p>
             <h1 className="font-display text-[13vw] leading-[0.95] md:text-[5.2vw] md:leading-[0.95] tracking-tight">
-              Objects for
+              Everyday care,
               <br />
-              <span className="italic text-clayDeep">slower</span> rooms.
+              <span className="italic text-clayDeep">made</span> simple.
             </h1>
             <p className="mt-8 max-w-md text-ink/70 leading-relaxed">
-              Infinix designs candles, diffusers, and light objects in small,
-              considered collections — built to be lived with, not just
-              looked at.
+              Infinix makes soaps, hand washes, sanitizers, and everyday
+              hygiene essentials — built for daily use, priced to be
+              stocked in every bathroom, not saved for special occasions.
             </p>
             <div className="mt-10 flex items-center gap-6">
               <Link
@@ -43,30 +44,31 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="md:col-span-5 md:col-start-8 order-1 md:order-2">
+          <div className="md:col-span-7 md:col-start-6 order-1 md:order-2">
             <ImageFrame
-              src="/images/products/aloe-vera-soap.webp"
-              alt="An Infinix candle vessel resting on a stone surface"
+              src="/images/hero-banner.webp"
+              alt="The full Infinix product range, arranged together"
               priority
-              className="aspect-[4/5] md:aspect-[3/4] md:translate-y-10"
-              sizes="(min-width: 768px) 42vw, 100vw"
+              fit="contain"
+              className="aspect-[4/3]"
+              sizes="(min-width: 768px) 58vw, 100vw"
             />
           </div>
         </div>
       </section>
 
       <div className="max-w-content mx-auto px-6 md:px-10 mt-20 md:mt-28">
-        <InfinityDivider label="Est. Studio" />
+        <InfinityDivider label="Infinity Industries" />
       </div>
 
       {/* STATEMENT LINE */}
       <section className="max-w-content mx-auto px-6 md:px-10 py-16 md:py-24">
         <Reveal>
           <p className="font-display text-2xl md:text-4xl leading-snug max-w-3xl">
-            We design in threes — a candle, a diffuser, an object — and
-            release them together, so a room can be furnished{" "}
-            <span className="italic text-clayDeep">in one sitting</span>{" "}
-            rather than assembled over years.
+            We make the products people reach for every day — a soap, a
+            hand wash, a sanitizer — and price them{" "}
+            <span className="italic text-clayDeep">so quality never</span>{" "}
+            has to be the thing you skip.
           </p>
         </Reveal>
       </section>
@@ -87,10 +89,10 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
           {featured.map((product, i) => (
             <Reveal key={product.slug} delay={i * 90}>
-              <ProductCard product={product} tall={i === 1} />
+              <ProductCard product={product} />
             </Reveal>
           ))}
         </div>
@@ -102,7 +104,7 @@ export default function HomePage() {
           <Reveal className="md:col-span-5">
             <ImageFrame
               src="/images/products/lavender-hygiene-kit.webp"
-              alt="Inside the Infinix studio, materials and vessels laid out on a workbench"
+              alt="An Infinix hygiene kit and personal care essentials"
               className="aspect-[4/5]"
             />
           </Reveal>
@@ -111,13 +113,13 @@ export default function HomePage() {
               About Infinix
             </p>
             <h2 className="font-display text-3xl md:text-4xl leading-tight mb-6">
-              Fewer objects, made to last longer.
+              Quality care, at a fair price.
             </h2>
             <p className="text-ink/70 leading-relaxed max-w-md mb-8">
-              Every Infinix collection is designed, cast, and finished in one
-              studio, in quantities small enough to inspect by hand. We
-              publish two collections a year and let them sell out rather
-              than reproduce them endlessly.
+              Every Infinix product is formulated and quality-checked before
+              it reaches a shelf. We keep our range focused on the personal
+              care and household hygiene essentials people actually use
+              every day, so quality and affordability don't have to compete.
             </p>
             <Link
               href="/about"
@@ -132,71 +134,31 @@ export default function HomePage() {
       {/* CATEGORIES */}
       <section className="max-w-content mx-auto px-6 md:px-10 py-20 md:py-28">
         <Reveal>
-          <h2 className="font-display text-2xl md:text-3xl mb-10">
-            Shop by collection
+          <h2 className="font-display text-2xl md:text-3xl text-center mb-3">
+            Shop by category
           </h2>
+          <div className="w-10 h-px bg-clay mx-auto mb-14" />
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              cat: "Soap",
-              image: "/images/products/aloe-vera-soap.webp",
-              copy: "Everyday bars in aloe vera, charcoal, sandalwood, and more.",
-            },
-            {
-              cat: "Hand Wash",
-              image: "/images/products/lavender-hand-wash.webp",
-              copy: "Gentle liquid hand washes for daily hygiene.",
-            },
-            {
-              cat: "Sanitizer",
-              image: "/images/products/aqua-sanitizer.webp",
-              copy: "Quick-drying sanitizers for on-the-go use.",
-            },
-          ].map((c, i) => (
-            <Reveal key={c.cat} delay={i * 90}>
-              <Link href={`/shop?category=${encodeURIComponent(c.cat)}`} className="group block">
-                <ImageFrame
-                  src={c.image}
-                  alt={c.cat}
-                  className="aspect-[4/5] transition-transform duration-700 ease-smooth group-hover:scale-[1.03]"
-                />
-                <div className="mt-4">
-                  <h3 className="font-display text-xl">{c.cat}</h3>
-                  <p className="text-sm text-ink/60 mt-1">{c.copy}</p>
-                </div>
+        <div className="grid grid-cols-3 gap-6 md:gap-10 max-w-2xl mx-auto">
+          {categoryGroups.map((g, i) => (
+            <Reveal key={g.slug} delay={i * 90}>
+              <Link href={`/shop?group=${g.slug}`} className="group flex flex-col items-center gap-4 text-center">
+                <span className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-paper border border-line flex items-center justify-center overflow-hidden transition-colors duration-300 group-hover:border-clay">
+                  <Image
+                    src={g.icon}
+                    alt=""
+                    aria-hidden
+                    width={56}
+                    height={56}
+                    className="w-9 h-9 sm:w-12 sm:h-12 object-contain"
+                  />
+                </span>
+                <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest2 text-ink leading-snug">
+                  {g.label}
+                </span>
               </Link>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* CTA BANNER */}
-      <section className="relative">
-        <div className="relative h-[70vh] min-h-[420px] max-h-[640px] overflow-hidden">
-          <ImageFrame
-            src="/images/products/masculin-value-pack.webp"
-            alt="A dimly lit room with an Infinix lamp and candle"
-            className="absolute inset-0 h-full w-full"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-ink/35" />
-          <div className="relative h-full max-w-content mx-auto px-6 md:px-10 flex flex-col justify-end pb-16 md:pb-20">
-            <Reveal>
-              <p className="font-mono text-[11px] uppercase tracking-widest2 text-bone/70 mb-4">
-                Now viewing — full collection
-              </p>
-              <h2 className="font-display text-3xl md:text-5xl text-bone max-w-xl leading-tight mb-8">
-                See every piece in the current release.
-              </h2>
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-3 bg-bone text-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-widest2 hover:bg-clay hover:text-ink transition-colors duration-300 w-fit"
-              >
-                Enter the shop
-              </Link>
-            </Reveal>
-          </div>
         </div>
       </section>
     </>

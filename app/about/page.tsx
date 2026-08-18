@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import ImageFrame from "@/components/ImageFrame";
 import InfinityDivider from "@/components/InfinityDivider";
 import Reveal from "@/components/Reveal";
+import FranchiseeCard from "@/components/FranchiseeCard";
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
@@ -52,14 +53,17 @@ const loveGrid = [
 const franchisees = [
   {
     name: "Disney Frozen",
+    image: "/images/frozen.jpg",
     copy: "Infinity Industries Pvt. Ltd. was previously associated with Disney Frozen under an official licensing arrangement, bringing the world of Elsa and Anna to children through a range of personal care and lifestyle products.",
   },
   {
     name: "Mickey & Friends",
+    image: "/images/mickey.jpg",
     copy: "Through a past association with Mickey & Friends, Infinity Industries introduced a collection of products inspired by Disney's most beloved characters, for children and families.",
   },
   {
     name: "Marvel Spider-Man",
+    image: "/images/spiderman.jpg",
     copy: "A past collaboration with Marvel Spider-Man allowed Infinity Industries to offer products inspired by one of the world's most iconic superheroes.",
   },
 ];
@@ -165,8 +169,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-8">
           {franchisees.map((f, i) => (
             <Reveal key={f.name} delay={i * 90}>
-              <h3 className="font-display text-xl mb-3">{f.name}</h3>
-              <p className="text-sm text-ink/60 leading-relaxed">{f.copy}</p>
+              <FranchiseeCard name={f.name} image={f.image} copy={f.copy} />
             </Reveal>
           ))}
         </div>

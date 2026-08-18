@@ -4,19 +4,22 @@ import { useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCard";
 import Reveal from "./Reveal";
-import { categories, products } from "@/lib/products";
+import { categories, categoryGroups, products } from "@/lib/products";
 
 const tabs = ["All", ...categories];
 
 export default function ShopGrid() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const active = searchParams.get("category") ?? "All";
+  const groupSlug = searchParams.get("group");
+  const group = groupSlug ? categoryGroups.find((g) => g.slug === groupSlug) : undefined;
+  const active = group ? "All" : searchParams.get("category") ?? "All";
 
   const filtered = useMemo(() => {
+    if (group) return products.filter((p) => group.categories.includes(p.category));
     if (active === "All") return products;
     return products.filter((p) => p.category === active);
-  }, [active]);
+  }, [active, group]);
 
   const setCategory = (tab: string) => {
     if (tab === "All") {
@@ -28,6 +31,20 @@ export default function ShopGrid() {
 
   return (
     <>
+      {group && (
+        <div className="mb-8 flex items-center gap-3">
+          <span className="font-mono text-[11px] uppercase tracking-widest2 text-ink/50">
+            Showing: {group.label}
+          </span>
+          <button
+            onClick={() => router.push("/shop")}
+            className="font-mono text-[11px] uppercase tracking-widest2 text-ink/40 hover:text-ink underline underline-offset-4 decoration-line"
+          >
+            Clear
+          </button>
+        </div>
+      )}
+
       <div
         role="tablist"
         aria-label="Filter by collection"
@@ -37,10 +54,10 @@ export default function ShopGrid() {
           <button
             key={tab}
             role="tab"
-            aria-selected={active === tab}
+            aria-selected={!group && active === tab}
             onClick={() => setCategory(tab)}
             className={`font-mono text-[11px] uppercase tracking-widest2 transition-colors pb-1 border-b ${
-              active === tab
+              !group && active === tab
                 ? "text-ink border-ink"
                 : "text-ink/45 border-transparent hover:text-ink"
             }`}

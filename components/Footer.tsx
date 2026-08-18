@@ -1,15 +1,13 @@
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-bone">
       <div className="max-w-content mx-auto px-6 md:px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-4">
-          <Link href="/" className="font-display text-xl flex items-center gap-2">
-            <span aria-hidden className="text-clayDeep">
-              ∞
-            </span>
-            Infinix
+          <Link href="/" className="inline-block">
+            <Logo />
           </Link>
           <p className="mt-4 text-sm text-ink/60 max-w-xs leading-relaxed">
             Objects for slower rooms. Designed in small collections, shown
