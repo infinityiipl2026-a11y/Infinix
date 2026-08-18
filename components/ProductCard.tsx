@@ -4,7 +4,6 @@ import { Product } from "@/lib/products";
 
 export default function ProductCard({
   product,
-  tall = false,
 }: {
   product: Product;
   tall?: boolean;
@@ -18,18 +17,20 @@ export default function ProductCard({
       <ImageFrame
         src={product.image}
         alt={product.name}
-        className={`w-full ${tall ? "aspect-[3/4]" : "aspect-[4/5]"} transition-transform duration-700 ease-smooth group-hover:scale-[1.03]`}
+        fit="contain"
+        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 47vw"
+        className="w-full aspect-square border border-line/70 transition-transform duration-500 ease-smooth group-hover:scale-[1.02]"
       />
-      <div className="mt-4 flex items-start justify-between gap-4">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink/40 mb-1">
+      <div className="mt-3 flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <p className="font-mono text-[9px] uppercase tracking-widest2 text-ink/40 mb-1">
             {product.category}
           </p>
-          <h3 className="font-display text-lg leading-tight">
+          <h3 className="font-display text-sm sm:text-base leading-tight truncate">
             {product.name}
           </h3>
         </div>
-        <p className="font-mono text-sm text-ink/70 whitespace-nowrap pt-1">
+        <p className="font-mono text-xs sm:text-sm text-ink/70 whitespace-nowrap pt-0.5">
           &#8377;{product.price.toLocaleString("en-IN")}
         </p>
       </div>

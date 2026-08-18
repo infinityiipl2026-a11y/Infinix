@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import ImageFrame from "@/components/ImageFrame";
 import InfinityDivider from "@/components/InfinityDivider";
-import ProductCard from "@/components/ProductCard";
+import ProductCarousel from "@/components/ProductCarousel";
 import Reveal from "@/components/Reveal";
 import { getProduct, products } from "@/lib/products";
 
@@ -60,7 +60,8 @@ export default function ProductPage({ params }: Props) {
                 src={product.image}
                 alt={product.name}
                 priority
-                className="aspect-square"
+                fit="contain"
+                className="aspect-square border border-line/70"
                 sizes="(min-width: 768px) 55vw, 100vw"
               />
             </Reveal>
@@ -118,12 +119,8 @@ export default function ProductPage({ params }: Props) {
       {related.length > 0 && (
         <section className="max-w-content mx-auto px-6 md:px-10 pb-24">
           <InfinityDivider label="More from this collection" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14 mt-14">
-            {related.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 90}>
-                <ProductCard product={p} tall={i === 1} />
-              </Reveal>
-            ))}
+          <div className="mt-14">
+            <ProductCarousel products={related} />
           </div>
         </section>
       )}

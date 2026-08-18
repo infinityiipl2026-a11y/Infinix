@@ -53,10 +53,10 @@ export default function ShopGrid() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
         {filtered.map((product, i) => (
-          <Reveal key={product.slug} delay={(i % 3) * 80}>
-            <ProductCard product={product} tall={i % 5 === 1} />
+          <Reveal key={product.slug} delay={(i % 4) * 80}>
+            <ProductCard product={product} />
           </Reveal>
         ))}
       </div>
