@@ -5,22 +5,40 @@ import { FormEvent, useState } from "react";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+    const interest = (form.elements.namedItem("interest") as HTMLInputElement).value.trim();
     const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+    const company = (form.elements.namedItem("company") as HTMLInputElement).value; // honeypot
 
     if (!name || !email || !message) {
       setError("Please fill in your name, email, and message.");
       return;
     }
+
     setError(null);
-    // Display-only: no backend is wired up. In production, POST to an
-    // API route or third-party form/email service here.
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, interest, message, company }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -44,6 +62,15 @@ export default function ContactForm() {
         <Field label="Email" name="email" type="email" autoComplete="email" required />
       </div>
       <Field label="Interested in (optional)" name="interest" type="text" placeholder="e.g. Ember Vessel" />
+      {/* Honeypot field: hidden from real users, bots tend to fill it in */}
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       <div>
         <label
           htmlFor="message"
@@ -68,9 +95,10 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center gap-3 border border-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-widest2 hover:bg-ink hover:text-bone transition-colors duration-300"
+        disabled={loading}
+        className="inline-flex items-center gap-3 border border-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-widest2 hover:bg-ink hover:text-bone transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Send enquiry
+        {loading ? "Sending…" : "Send enquiry"}
       </button>
     </form>
   );
