@@ -54,17 +54,17 @@ const franchisees = [
   {
     name: "Disney Frozen",
     image: "/images/frozen.jpg",
-    copy: "Infinity Industries Pvt. Ltd. was previously associated with Disney Frozen under an official licensing arrangement, bringing the world of Elsa and Anna to children through a range of personal care and lifestyle products.",
+    copy: " Infinix was previously associated with Disney Frozen under an official licensing arrangement, bringing the world of Elsa and Anna to children through a range of personal care and lifestyle products.",
   },
   {
     name: "Mickey & Friends",
     image: "/images/mickey.jpg",
-    copy: "Through a past association with Mickey & Friends, Infinity Industries introduced a collection of products inspired by Disney's most beloved characters, for children and families.",
+    copy: "Through a past association with Mickey & Friends, Infinix introduced a collection of products inspired by Disney's most beloved characters, for children and families.",
   },
   {
     name: "Marvel Spider-Man",
     image: "/images/spiderman.jpg",
-    copy: "A past collaboration with Marvel Spider-Man allowed Infinity Industries to offer products inspired by one of the world's most iconic superheroes.",
+    copy: "A past collaboration with Marvel Spider-Man allowed Infinix to offer products inspired by one of the world's most iconic superheroes.",
   },
 ];
 
@@ -163,7 +163,7 @@ export default function AboutPage() {
             Previous Franchisee Associations
           </h2>
           <p className="text-sm text-ink/60 max-w-2xl mb-14 leading-relaxed">
-            Past licensing partnerships Infinity Industries has held.
+            Past licensing partnerships Infinix has held.
           </p>
         </Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-8">

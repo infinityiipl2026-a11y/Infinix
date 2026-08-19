@@ -37,7 +37,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="md:col-span-3">
+        {/* <div className="md:col-span-3">
           <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink/40 mb-4">
             Visit
           </p>
@@ -45,12 +45,12 @@ export default function Footer() {
             Studio 4, Lower Mill Yard<br />
             Open by appointment
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="border-t border-line">
         <div className="max-w-content mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-widest2 text-ink/40">
-          <span>&copy; {new Date().getFullYear()} Infinix Studio</span>
+          <span>&copy; {new Date().getFullYear()} Infinix </span>
           <span>Display only — no online purchasing</span>
         </div>
       </div>

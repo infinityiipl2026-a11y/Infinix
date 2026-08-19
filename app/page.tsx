@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto px-6 md:px-10 pt-14 md:pt-20 pb-16 md:pb-0 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-center">
           <div className="md:col-span-5 md:col-start-1 order-2 md:order-1">
             <p className="font-mono text-[11px] uppercase tracking-widest2 text-ink/50 mb-6">
-              Infinix — Current Collection
+              Infinix 
             </p>
             <h1 className="font-display text-[13vw] leading-[0.95] md:text-[5.2vw] md:leading-[0.95] tracking-tight">
               Everyday care,
