@@ -51,7 +51,7 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="max-w-content mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-widest2 text-ink/40">
           <span>&copy; {new Date().getFullYear()} Infinix </span>
-          <span>Display only — no online purchasing</span>
+          {/* <span>Display only — no online purchasing</span> */}
         </div>
       </div>
     </footer>

@@ -182,9 +182,9 @@ export default function AboutPage() {
             <h2 className="font-display text-3xl md:text-4xl mb-6">
               See the current collection
             </h2>
-            <p className="text-ink/60 max-w-md mx-auto mb-9 leading-relaxed">
+            {/* <p className="text-ink/60 max-w-md mx-auto mb-9 leading-relaxed">
               {products.length} products, shown as they stand today.
-            </p>
+            </p> */}
             <Link
               href="/shop"
               className="inline-flex items-center gap-3 border border-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-widest2 hover:bg-ink hover:text-bone transition-colors duration-300"
